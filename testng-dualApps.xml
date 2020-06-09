@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite 1" parallel="tests" thread-count="2">
+    <!-- For sequential run use only platform parameter for both (iOS & Android) test cases-->
+    <test name="Android_VerifiyNotifications1">
+        <parameter name="deviceName" value="ZY224P7HZB" />
+        <parameter name="platformVersion" value="9" />
+        <parameter name="platform" value="Android" />
+        <classes>
+            <class name="com.basics.TestSuiteMutipleApps"/>
+        </classes>
+    </test>
+
+</suite>

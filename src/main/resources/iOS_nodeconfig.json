@@ -1,0 +1,26 @@
+{
+    "capabilities": [
+        {
+            "deviceName": "iPad mini 3",
+            "browserName": "Safari",
+            "version":"12.1",
+            "maxInstances": 2,
+            "platformName": "i0S",
+            "automationName": "XCUITest",
+            "xcodeOrgId" : "",
+            "xcodeSigningId" : "iPhone Developer",
+        }
+    ],
+    
+"configuration": {
+        "cleanUpCycle":3000,
+        "timeout":30000,
+        "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+        "maxSession": 2,
+        "register": true,
+        "registerCycle": 5000,
+        "hubPort": 4444,
+        "hubHost": "192.168.3.172"
+    }
+}
+
