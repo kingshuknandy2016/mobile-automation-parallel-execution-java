@@ -1,9 +1,8 @@
-package com.pageobject;
+package com.mobile.android.pageobject;
 
-import com.utils.PropertyFileUtils;
+import com.mobile.android.utils.PropertyFileUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -37,7 +36,7 @@ public class CustomMobileDriver {
     HashMap<String, Object> propertyMap = propertyFileUtils.readPropertyFile();
     DesiredCapabilities caps = new DesiredCapabilities();
 
-    if (propertyMap.get("platformName").toString().equalsIgnoreCase("android")) {
+    if (propertyMap.get("platformName").toString().equalsIgnoreCase("com/mobile/android")) {
       caps.setCapability(MobileCapabilityType.PLATFORM_NAME, propertyMap.get("platformName"));
       caps.setCapability(MobileCapabilityType.DEVICE_NAME, propertyMap.get("deviceName"));
       caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, propertyMap.get("appPackage"));
