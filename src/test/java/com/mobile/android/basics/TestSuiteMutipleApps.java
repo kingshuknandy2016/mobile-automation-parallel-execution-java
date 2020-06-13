@@ -1,4 +1,4 @@
-package com.basics;
+package com.mobile.android.basics;
 
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;

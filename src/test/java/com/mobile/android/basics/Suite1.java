@@ -1,4 +1,4 @@
-package com.basics;
+package com.mobile.android.basics;
 
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;

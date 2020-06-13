@@ -1,4 +1,4 @@
-package com.reporting;
+package com.general.reporting;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -30,7 +30,7 @@ public class ExtentReporter {
 			String workingDir = System.getProperty("user.dir");
 			htmlReporter = new ExtentHtmlReporter(workingDir + File.separator + "reportsandlogs" + File.separator + "Custom" + "_ExtentReportResults.html");
 			extent.attachReporter(htmlReporter);
-			htmlReporter.loadConfig(workingDir + "/src/test/java/com/reporting/" + "extent-config.xml");
+			htmlReporter.loadConfig(workingDir + "/src/test/java/com/general/reporting/" + "extent-config.xml");
 			htmlReporter.config().setTheme(Theme.DARK);// Default Theme of Report
 			htmlReporter.config().setDocumentTitle("Custom Execution Report");
 			htmlReporter.config().enableTimeline(true);

@@ -1,7 +1,7 @@
-package com.utils;
+package com.general.utils;
 
+import com.mobile.android.pageobject.CustomMobileDriver;
 import com.google.common.io.Files;
-import com.pageobject.CustomMobileDriver;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;

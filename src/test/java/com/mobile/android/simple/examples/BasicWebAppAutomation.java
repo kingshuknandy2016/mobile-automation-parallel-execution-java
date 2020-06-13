@@ -1,4 +1,4 @@
-package com.simple.examples;
+package com.mobile.android.simple.examples;
 
 import io.appium.java_client.remote.MobileCapabilityType;
 import java.net.MalformedURLException;

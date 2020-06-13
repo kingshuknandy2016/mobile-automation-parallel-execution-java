@@ -11,15 +11,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Driver {
+public class CustomWebDriver {
 
-	private static WebDriver driver;
+	private static org.openqa.selenium.WebDriver driver;
 	private static WebDriverWait wait;
 
 	public static void closeDriverInstance() {
@@ -67,19 +66,19 @@ public class Driver {
 			System.out.println("Error occured while execution of takescreenshot object");
 			System.out.println("Exception:" + e.getLocalizedMessage());
 		}
-		new Driver().closeDriverInstance();
+		new CustomWebDriver().closeDriverInstance();
 		/* return "data:image/png;base64," + encodedBase64; */
 		return path;
 	}
 
-	public Driver() {
+	public CustomWebDriver() {
 	}
 
 	/**
 	 * Init chrome driver instnace
 	 * @return Driver instance
 	 */
-	public WebDriver getDriver() {
+	public org.openqa.selenium.WebDriver getDriver() {
 		if (null != driver) {
 			return driver;
 		} else {
@@ -100,7 +99,7 @@ public class Driver {
 	 *
 	 * @return driver instance
 	 */
-	private WebDriver initChromeDriver() {
+	private org.openqa.selenium.WebDriver initChromeDriver() {
 		String platform = getOS();
 		System.out.println("Running on Platform " + platform);
 		if (platform.contains("Windows")) {
@@ -151,7 +150,7 @@ public class Driver {
 		String locator="//div[@class='sLyGP0wLcAHIXOwzPjSkG' and text()='%s' and class()='%s']";
 		String taskId="";
 		String abc="";
-		Driver driver=new Driver();
+		CustomWebDriver driver=new CustomWebDriver();
 		WebElement element=driver.getWebElement(locator,taskId,abc);
 	}
 }

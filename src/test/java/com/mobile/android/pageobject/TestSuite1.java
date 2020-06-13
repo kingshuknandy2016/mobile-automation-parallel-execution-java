@@ -1,6 +1,6 @@
-package com.pageobject;
+package com.mobile.android.pageobject;
 
-import com.pageobject.pages.LoginPage;
+import com.mobile.android.pageobject.pages.LoginPage;
 import java.io.IOException;
 
 public class TestSuite1 {
