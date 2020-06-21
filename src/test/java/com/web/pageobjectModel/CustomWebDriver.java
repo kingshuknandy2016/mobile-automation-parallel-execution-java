@@ -13,6 +13,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -96,7 +97,6 @@ public class CustomWebDriver {
 
 	/**
 	 * Open Chrome driver in headless mode
-	 *
 	 * @return driver instance
 	 */
 	private org.openqa.selenium.WebDriver initChromeDriver() {
@@ -122,35 +122,69 @@ public class CustomWebDriver {
 		return driver;
 	}
 
+	/*
+	 *@info : wait till isDisplayed=true
+	 */
+	public void waitUntilElementIsVisible(WebElement element, int timeUnit) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), timeUnit);
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	/*
+	 *@info : wait till isDisplayed=false
+	 */
+	public void waitUntilElementIsInVisible(WebElement element, int timeUnit) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), timeUnit);
+		wait.until(ExpectedConditions.invisibilityOf(element));
+	}
+	/*
+	 *@info : wait till isEnabled=true
+	 */
+	public void waitUntilElementIsClickable(WebElement element, int timeUnit) {
+
+		WebDriverWait wait = new WebDriverWait(getDriver(), timeUnit);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+
+	/*
+	*@info : Wait For page to load
+	 */
+	public void waitForPageToLoad() {
+		new WebDriverWait(driver, 30).until(
+				driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
+	}
+
+
 	public void javaScriptClick(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", element);
+	}
+
+	public  WebElement getWebElement(String locator,Object value){
+		return getDriver().findElement(By.xpath(String.format(locator, value)));
+	}
+
+	public void actionClassClick(WebElement element) {
+		Actions action = new Actions(driver);
+
+		action.moveToElement(element).click().build().perform();
+	}
+
+	public void actionClassMoveToElement(WebElement element) {
+		Actions action = new Actions(driver);
+
+		action.moveToElement(element).build().perform();
 	}
 
 	public void ScrollToElement(WebElement webElement) {
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
 	}
 
-	public void waitForElementClickable(Long timeUnit, WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, timeUnit);
-		wait.until(ExpectedConditions.elementToBeClickable(element));
+	public void focusELement(WebElement webElement) {
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].focus();", webElement);
 	}
 
-	public void waitForPageToLoad() {
-		new WebDriverWait(driver, 30).until(
-				driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
-	}
-
-	public  WebElement getWebElement(String locator,Object... value){
-		return getDriver().findElement(By.xpath(String.format(locator, value,value)));
-	}
-
-
-	public static void main(String[] args) {
-		String locator="//div[@class='sLyGP0wLcAHIXOwzPjSkG' and text()='%s' and class()='%s']";
-		String taskId="";
-		String abc="";
-		CustomWebDriver driver=new CustomWebDriver();
-		WebElement element=driver.getWebElement(locator,taskId,abc);
+	public void scrollHorizontal(WebElement webElement) {
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollLeft += 250;", webElement);
 	}
 }
